@@ -9,6 +9,36 @@
   </head>
   <body>
     <h1>Rafid's favorite books are:</h1>
+    <div class="search-container">
+      <form action="/" method="post">
+        <input
+          type="search"
+          class="search"
+          placeholder="Search.."
+          name="search"
+        />
+        <button class="search-button" type="submit">Submit</button>
+      </form>
+    </div>
+
+    {% if results %}
+    <h2>Top 5 results for "{{ search_term }}"</h2>
+    <ol>
+      {% for result in results %}
+      <li>
+        <div class="container">
+          {{ result["title"] }}{% if result["subtitle"] %}, {{
+          result["subtitle"] }} {% endif %} {% if result["author"] %}By {{
+          result["author"] }} {% endif %}
+          <div class="images">
+            <img src="{{ result['thumbnail'] }}" alt="book{{ i }}" />
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+    {% endif %}
+
     <ol>
       {% for i in range(length_of_books) %} {% if i == 2 %}
       <li class="favorite">
