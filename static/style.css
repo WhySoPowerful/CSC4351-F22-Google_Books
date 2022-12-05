@@ -1,10 +1,11 @@
 body {
-  background-color:black;
-  color:powderblue;
+  background-color: black;
+  color: powderblue;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
+h1,
+h2 {
   text-align: center;
 }
 
@@ -24,7 +25,7 @@ img {
 
 /* favorite list item */
 .favorite {
-  color:lime;
+  color: lime;
 }
 
 .container {
@@ -37,4 +38,29 @@ img {
 .images {
   width: 100px;
   height: 80x;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.search {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  background-color: rgb(241, 241, 241);
+}
+
+.search-button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
 }
