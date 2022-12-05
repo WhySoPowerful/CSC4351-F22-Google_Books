@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/login_vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/login_fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/login_vendor/animate/animate.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/login_vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/login_vendor/animsition/css/animsition.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/login_vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/login_vendor/daterangepicker/daterangepicker.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/login_css/util.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/login_css/main.css"
+    />
+    <!--===============================================================================================-->
+  </head>
+  <body>
+    <div class="signin-page">
+      <div class="limiter">
+        <div class="container-login100">
+          <div class="wrap-login100">
+            <form
+              class="login100-form validate-form p-l-55 p-r-55 p-t-178"
+              action="/login"
+              method="post"
+            >
+              <span class="login100-form-title"> Sign In </span>
+              {% with messages = get_flashed_messages() %} {% if messages %} {%
+              for message in messages %}
+              <h6
+                class="subheading muted reviewer-city"
+                style="text-align: center"
+              >
+                {{ message }}
+              </h6>
+              {% endfor %} {% endif %} {% endwith %}
+              <div
+                class="wrap-input100 validate-input m-b-16"
+                data-validate="Please enter username"
+              >
+                <input
+                  class="input100"
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                />
+                <span class="focus-input100"></span>
+              </div>
+
+              <div
+                class="wrap-input100 validate-input"
+                data-validate="Please enter password"
+              >
+                <input
+                  class="input100"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="text-right p-t-13 p-b-23"></div>
+
+              <div class="container-login100-form-btn">
+                <button class="login100-form-btn" type="submit">Sign in</button>
+              </div>
+
+              <div class="flex-col-c p-t-170 p-b-40">
+                <span class="txt1 p-b-9"> Don’t have an account? </span>
+
+                <a href="#" class="txt3" id="sign-up"> Sign up now </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="signup-page" style="display: none">
+      <div class="limiter">
+        <div class="container-login100">
+          <div class="wrap-login100">
+            <form
+              class="login100-form validate-form2 p-l-55 p-r-55 p-t-178"
+              action="/signup"
+              method="post"
+            >
+              <span class="login100-form-title"> Sign Up </span>
+
+              <div
+                class="wrap-input100 validate-input2 m-b-16"
+                data-validate="Please enter username"
+              >
+                <input
+                  class="input101"
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                />
+                <span class="focus-input100"></span>
+              </div>
+
+              <div
+                class="wrap-input100 validate-input2"
+                data-validate="Please enter password"
+              >
+                <input
+                  class="input101"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="text-right p-t-13 p-b-23"></div>
+
+              <div class="container-login100-form-btn">
+                <button class="login100-form-btn" type="submit">Sign Up</button>
+              </div>
+
+              <div class="flex-col-c p-t-170 p-b-40">
+                <span class="txt1 p-b-9"> Already have an account? </span>
+
+                <a href="#" class="txt3" id="sign-in"> Sign in now </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="../static/login_vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../static/login_vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../static/login_vendor/bootstrap/js/popper.js"></script>
+    <script src="../static/login_vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../static/login_vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../static/login_vendor/daterangepicker/moment.min.js"></script>
+    <script src="../static/login_vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="../static/login_vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="../static/login_js/main.js"></script>
+  </body>
+</html>
