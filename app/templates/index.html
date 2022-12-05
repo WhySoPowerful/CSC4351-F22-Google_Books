@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ブック</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="../static/css/owl.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/animate.css" />
+    <link
+      href="../static/font-awesome-4.1.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" type="text/css" href="../static/css/et-icons.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/tooltip.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/lightbox.css" />
+    <link
+      id="main"
+      rel="stylesheet"
+      type="text/css"
+      href="../static/css/publisher.css"
+    />
+  </head>
+  <body>
+    <div id="wrapper" class="behind">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"
+              ><img src="../static/img/logo.png" alt=""
+            /></a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div
+            class="collapse navbar-collapse"
+            id="bs-example-navbar-collapse-1"
+          >
+            <ul class="nav navbar-nav navbar-right main-nav">
+              <li><a href="/logout" class="scrollto">Logout</a></li>
+              <li>
+                <form action="/home" method="post">
+                  <input
+                    id="search-input"
+                    type="search"
+                    class="search"
+                    placeholder="Search.."
+                    name="search"
+                    style="border-radius: 5px; border: none; outline-width: 0"
+                    required
+                  />
+                  <button
+                    id="search-btn"
+                    class="btn btn-green"
+                    style="font-size: 15px; margin: 0px; padding: 5px"
+                  >
+                    Search
+                  </button>
+                </form>
+              </li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </nav>
+
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <h6 class="subheading muted reviewer-city">{{ message }}</h6>
+      {% endfor %} {% endif %} {% endwith %}
+
+      <!---->
+
+      {% if results %}
+      <div class="row">
+        <div class="col-sm-6 text-left">
+          <h2 class="heading">Top 5 results for "{{ search_term }}"</h2>
+        </div>
+      </div>
+      <section id="reviews" class="reviews">
+        <div class="container">
+          <div class="row">
+            <div class="owl-reviews">
+              {% for result in results %}
+              <div class="item">
+                <div class="review text-center wow animated fadeInUp">
+                  <img
+                    src="{{ result['thumbnail'] }}"
+                    class="reviewer-pic"
+                    alt=""
+                  />
+                  <h4 class="subheading reviewer-name">
+                    {{ result["title"] }}
+                  </h4>
+                  <h6 class="subheading muted reviewer-city">
+                    {{ result["author"] }}
+                  </h6>
+                  <p class="small">{{ result["description"] }}</p>
+                  <a
+                    href="/add/{{ result['id'] }}"
+                    onclick='return confirm("Add book to favorites?");'
+                  >
+                    <button type="button" class="btn btn-green">
+                      Add to Favorites
+                    </button>
+                  </a>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+      {% endif %} {% if books %}
+      <section id="reviews" class="reviews">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 text-left">
+              <h2 class="heading">Favorites</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="owl-reviews">
+              {% for i in range(length_of_books) %}
+              <div class="item">
+                <div class="review text-center wow animated fadeInUp">
+                  <img src="{{ book_images[i] }}" class="reviewer-pic" alt="" />
+                  <h4 class="subheading reviewer-name">
+                    {{ books[i]["title"] }}
+                  </h4>
+                  <h6 class="subheading muted reviewer-city">
+                    {{ books[i]["author"] }}
+                  </h6>
+                  <p class="small">{{ books[i]["description"] }}</p>
+                </div>
+                <a
+                  href="/remove/{{ books[i]['id'] }}"
+                  onclick='return confirm("Do you want to permanently delete this book?");'
+                >
+                  <button type="button" class="btn btn-green">
+                    Remove from Favorites
+                  </button>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+      {% else %}
+      <section id="reviews" class="reviews">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 text-left">
+              <h2 class="heading">No Favorites yet</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+    </div>
+
+    <script src="../static/js/jquery-1.11.1.min.js"></script>
+    <script src="../static/js/owl.carousel.js"></script>
+    <script src="../static/js/lightbox.min.js"></script>
+    <script src="../static/js/wow.min.js"></script>
+    <script src="../static/js/jquery.onepagenav.js"></script>
+    <script src="../static/js/core.js"></script>
+    <script src="../static/js/tooltip.js"></script>
+    <script src="../static/js/jquery.form-validator.js"></script>
+    <script src="../static/js/preloader.js"></script>
+    <script src="../static/js/main.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+  </body>
+</html>
